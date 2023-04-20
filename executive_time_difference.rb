@@ -35,33 +35,46 @@
 # 2 + n(2) + 1 > n
 
 #phase I
-def largest_contiguous_subsum(list)
-    subs = []
-    list.each_with_index do |number, index|
-        (index...list.length).each do |range_index|
-            subs << list[index..range_index]
-        end
-    end
-    subs.map! {|arrays| arrays.sum}
-    subs.max
-end
-
-#phase II
 # def largest_contiguous_subsum(list)
-#     largest_sum = 0
+#     subs = []
 #     list.each_with_index do |number, index|
 #         (index...list.length).each do |range_index|
-#             sub_num = list[index..range_index]
-                   
-#             if largest_sum == 0
-#                 largest_sum = sub_num.sum
-#             elsif largest_sum < sub_num.sum
-#                 largest_sum = sub_num.sum
-#             end
+#             subs << list[index..range_index]
 #         end
 #     end
-#     largest_sum
+#     subs.map! {|arrays| arrays.sum}
+#     subs.max
 # end
+
+# phase II
+def largest_contiguous_subsum(list)
+    largest_sum = list.first - 1 
+    current_sum = 0 
+
+
+
+    list.each_with_index do |number| 
+
+        if number > current_sum && current_sum < 0
+            current_sum = number 
+        else 
+            current_sum += number
+        end
+
+        
+
+        if current_sum < 0 && largest_sum > 0
+            current_sum = 0
+        end
+
+        if current_sum > largest_sum
+            largest_sum = current_sum
+        end
+
+
+    end
+    largest_sum
+end
 
 list = [5, 3, -7]
 p largest_contiguous_subsum(list)
@@ -69,3 +82,26 @@ list = [2, 3, -6, 7, -6, 7]
 p largest_contiguous_subsum(list)
 list = [-5, -1, -3]
 p largest_contiguous_subsum(list)
+
+        # (index...list.length).each do |range_index|
+        #     sub_num = list[index..range_index]
+                   
+        #     if largest_sum == 0
+        #         largest_sum = sub_num.sum
+        #     elsif largest_sum < sub_num.sum
+        #         largest_sum = sub_num.sum
+        #     end
+        # end
+
+        # if number < 0 && (index != list.length - 1)
+        #     if current_sum + number + list[forwards] < largest_sum # -1 + 7 = 6 < 
+        #         current_sum = 0
+        #     end
+        # end 
+
+        # current_sum += number
+
+        # if current_sum > largest_sum
+        #     largest_sum = current_sum
+        # end    
+            
