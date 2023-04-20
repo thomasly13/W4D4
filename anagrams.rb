@@ -29,5 +29,25 @@ def second_anagram?(word1,word2)
     false
 end
 
-# p second_anagram?("gizmo", "sally")    #=> false
-# p second_anagram?("elvis", "lives")    #=> true
+
+
+def third_anagram?(word1, word2)
+    word1.split('').sort == word2.split('').sort
+end
+
+# p third_anagram?("gizmo", "sally")    #=> false
+# p third_anagram?("elvis", "lives")    #=> true
+
+def fourth_anagram?(word1, word2)
+    counter1 = Hash.new(0)
+    counter2 = Hash.new(0)
+
+    word1.each_char { |char1| counter1[char1] += 1}
+    word2.each_char { |char2| counter2[char2] += 1}
+
+    counter1 == counter2
+
+end
+
+p fourth_anagram?("gizmo", "sally")    #=> false
+p fourth_anagram?("elvis", "lives")    #=> true
