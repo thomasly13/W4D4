@@ -51,7 +51,9 @@ def two_sum?(arr, target_sum)
     false
 end
 
-arr = [0, 7, 5, 1] # 0, 1, 5, 7
-p two_sum?(arr, 6) # => should be true
-p two_sum?(arr, 10) # => should be false
+# arr = [0, 7, 5, 1] # 0, 1, 5, 7
+arr = [0, 7, 5, 1, 25, -12, 90, 15]
+
+p two_sum?(arr, 3) # => should be true
+p two_sum?(arr, 9) # => should be false
 
