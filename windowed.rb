@@ -49,21 +49,24 @@ end
 
 def windowed_max_range(array, window)
     q = MyQueue.new
-    q.enqueue(array.shift)
+    last = array.shift
+    q.enqueue(last)
     current_max_range = 0
 
     until q.empty?
-
+        debugger
+        last = array.shift
         if q.size < window 
-            q.enqueue(array.shift)
+            q.enqueue(last)
         elsif q.size == window
-            if q.last - q.first > current_max_range
-                current_max_range = q.last - q.first
-                q.enqueue(array.shift)
+            if last - q.peek > current_max_range
+                current_max_range = last - q.peek
+                q.enqueue(last)
                 q.dequeue
             end
         end
 
+        
 
     end
     current_max_range
